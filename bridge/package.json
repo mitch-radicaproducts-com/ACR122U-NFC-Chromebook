@@ -1,0 +1,8 @@
+{
+    "name": "inventory-day-nfc",
+    "private": true,
+    "type": "module",
+    "dependencies": {
+        "nfc-pcsc": "^0.8.1"
+    }
+}

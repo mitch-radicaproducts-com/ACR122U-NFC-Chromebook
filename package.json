@@ -1,0 +1,8 @@
+{
+  "name": "acr122u-nfc-chromebook",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
