@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Inventory Day NFC",
+  "version": "1.0.0",
+  "description": "Passes ACR122U bin tags from the local reader bridge to the Inventory Day page.",
+  "host_permissions": [
+    "http://127.0.0.1:17341/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://airtable.com/*",
+        "https://*.airtable.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

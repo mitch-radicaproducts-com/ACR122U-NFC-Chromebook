@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Inventory Day iframe</title>
+<script>
+const seen = [];
+window.addEventListener('message', (event) => {
+    if (event.source !== window.top) return;
+    const data = event.data;
+    if (!data || data.source !== 'inventory-day-nfc' || data.type !== 'inventory-day:nfc') return;
+    seen.push({
+        state: data.state,
+        detail: data.detail,
+        uid: data.uid,
+        text: data.text,
+    });
+    fetch('/result', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(seen),
+    });
+});
+function hello() {
+    window.top.postMessage({source: 'inventory-day-nfc', type: 'inventory-day:nfc-hello'}, '*');
+}
+hello();
+setInterval(hello, 300);
+</script>
