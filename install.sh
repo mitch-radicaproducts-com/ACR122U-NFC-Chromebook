@@ -1,7 +1,7 @@
 #!/bin/bash
 # One-time installer for the Inventory Day NFC reader. Safe to run again.
 # ChromeOS mounts My files as noexec, so start this with bash:
-#   bash /mnt/chromeos/shared/MyFiles/NFC/install.sh
+#   bash /mnt/chromeos/shared/MyFiles/ACR122U-NFC-Chromebook-main/install.sh
 
 set -euo pipefail
 
