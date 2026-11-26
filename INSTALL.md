@@ -14,21 +14,21 @@ Plug in the ACR122U. Then open Settings, Developers, Linux, USB preferences, and
 
 The reader does not appear in Linux until it is shared. A reader that was unplugged may need to be shared again. The installer cannot do this step.
 
-## 3. Run the installer
+## 3. Put the project in My files and run the installer
 
-Copy this project onto the Chromebook. A folder in My files named `NFC` matches the path below. In the Linux terminal:
+Download the repository zip. It lands in Downloads. In the Files app, extract that zip directly into **My files** in the left sidebar. The extracted folder should sit in My files itself, beside Downloads, named `ACR122U-NFC-Chromebook-main`. Leave it out of Downloads and out of any other folder.
 
-```sh
-bash /mnt/chromeos/shared/MyFiles/NFC/install.sh
-```
+Share that folder with Linux. Right-click `ACR122U-NFC-Chromebook-main` and choose Share with Linux. Linux then sees it at `/mnt/chromeos/shared/MyFiles/ACR122U-NFC-Chromebook-main`.
 
-If the project was cloned inside Linux instead:
+In the Linux terminal:
 
 ```sh
-bash install.sh
+bash /mnt/chromeos/shared/MyFiles/ACR122U-NFC-Chromebook-main/install.sh
 ```
 
 The shared folder is mounted `noexec`, so start the installer with `bash`. The filename is `install.sh`.
+
+If the project was cloned inside Linux instead, run `bash install.sh` from that clone.
 
 The installer does all of the following:
 
@@ -44,7 +44,7 @@ Linux may ask for your password.
 1. Open `chrome://extensions`.
 2. Turn on Developer mode.
 3. Choose Load unpacked.
-4. Select the `extension` folder in this project.
+4. Select the `extension` folder inside `ACR122U-NFC-Chromebook-main` in My files.
 
 Leave the extension installed. It has permission for `http://127.0.0.1:17341/*` and for the Airtable pages it injects into. It has no serial-port permission. The scale script still owns the serial port.
 
@@ -69,5 +69,10 @@ On the Inventory Day page, a bin tag selects the record, and taking the tag off 
 ## If the reader stays quiet
 
 - Share the ACR122U with Linux again, then reopen Inventory Day NFC.
-- Run `bash install.sh` again. That rewrites the pcscd line and refreshes `~/nfc`.
+- Run the installer again. That rewrites the pcscd line and refreshes `~/nfc`:
+
+  ```sh
+  bash /mnt/chromeos/shared/MyFiles/ACR122U-NFC-Chromebook-main/install.sh
+  ```
+
 - The app-list name is **Inventory Day NFC**. The launcher file is `start-bridge.sh`.
